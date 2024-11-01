@@ -1,10 +1,12 @@
-<article>
-    <h2>{{ task.title }}</h2>
-    <time>{{ task.dueDate | date:'fullDate' }}</time>
-    <p>{{ task.summary }}</p>
-    <p>
-        <button class="btn"
+<article class="bg-primary-subtle border border-danger mb-3 p-1 w-50 mx-auto">
+    <div class="row mb-3 p-3">
+        <h2 class="col-sm-5 h4">{{ task.title }}</h2>
+        <time class="col-sm-7 h4">{{ task.dueDate | date:'fullDate' }}</time>
+        <p class="h5">{{ task.summary }}</p>
+    </div>
+    <div>
+        <button class="btn btn-danger"
             (click)="onCompleteTask()"
         >Complete</button>
-    </p>
+    </div>
 </article>

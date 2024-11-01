@@ -1,6 +1,6 @@
 <div class="container mx-auto">
   <app-header></app-header>
-  <main class="">
+  <main>
 
     @if (selectedUser) {
       <app-tasks
@@ -8,21 +8,21 @@
         [name]="selectedUser.name"
       ></app-tasks>
       } @else {
-      <p>Select a User to View their tasks</p>
+      <p class="h4 p-1">Select a User to View their tasks</p>
       }
 
-    <ul>
-      @for (user of users; track user.id) {
-      <li>
-        <app-user
-          [user]="user"
-          (select)="onSelectUser($event)"
-          [selected]="user.id === selectedUserId"
-        >
-        </app-user>
-      </li>
-      }
-    </ul>
+      <div class="row bg-success-subtle">
+        @for (user of users; track user.id) {
+          <div class="bg-warning-subtle mb-3 col-4">
+              <app-user
+                [user]="user"
+                (select)="onSelectUser($event)"
+                [selected]="user.id === selectedUserId"
+              >
+              </app-user>
+          </div>
+          }
+      </div>
 
 
   </main>
