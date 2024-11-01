@@ -4,17 +4,21 @@
     ></app-new-task>
 }
 
-<section>
-    <header>
-        <h2>{{ name }}'s Tasks</h2>
-        <menu>
-            <button (click)="onStartAddTask()">Add Task</button>
-        </menu>
-    </header>
-
-    <ul>
-        @for (task of selectedUserTasks; track task.id) {
-            <app-task [task]="task"></app-task>
-        }
-    </ul>
-</section>
+@if(!hidingTasks) {
+    <section class="bg-danger-subtle">
+        <header>
+            <h2>{{ name }}'s Tasks</h2>
+            <menu>
+                <button class="btn btn-success" (click)="onStartAddTask()">Add Task</button>
+            </menu>
+        </header>
+    
+        <div class="row bg-primary-subtle p-3">
+            @for (task of selectedUserTasks; track task.id) {
+                    <div class="col-3">
+                        <app-task [task]="task"></app-task>
+                    </div>
+            }
+        </div>
+    </section>
+}

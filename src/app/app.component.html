@@ -1,7 +1,6 @@
-<div class="container mx-auto">
+<div class="mx-auto">
   <app-header></app-header>
   <main>
-
     @if (selectedUser) {
       <app-tasks
         [userId]="selectedUser.id"
@@ -9,20 +8,23 @@
       ></app-tasks>
       } @else {
       <p class="h4 p-1">Select a User to View their tasks</p>
+      <hr>
       }
 
-      <div class="row bg-success-subtle">
-        @for (user of users; track user.id) {
-          <div class="bg-warning-subtle mb-3 col-4">
-              <app-user
-                [user]="user"
-                (select)="onSelectUser($event)"
-                [selected]="user.id === selectedUserId"
-              >
-              </app-user>
-          </div>
-          }
-      </div>
+      @if(!selectedUser) {
+        <div class="row">
+          @for (user of users; track user.id) {
+            <div class="col-3">
+                <app-user
+                  [user]="user"
+                  (select)="onSelectUser($event)"
+                  [selected]="user.id === selectedUserId"
+                >
+                </app-user>
+            </div>
+            }
+        </div>
+      }
 
 
   </main>

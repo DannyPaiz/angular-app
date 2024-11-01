@@ -17,6 +17,7 @@ export class TasksComponent {
   @Input({ required: true }) userId!: string;
   @Input({ required: true }) name?: string;
   isAddingTask = false;
+  hidingTasks = false;
 
   constructor(private tasksService: TasksService) {
     this.tasksService = tasksService;
@@ -28,10 +29,12 @@ export class TasksComponent {
 
   onStartAddTask() {
     this.isAddingTask = true;
+    this.hidingTasks = true;
   }
 
   onCloseAddTask() {
     this.isAddingTask = false;
+    this.hidingTasks = false;
   }
 
 }

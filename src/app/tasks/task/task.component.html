@@ -1,8 +1,8 @@
-<article class="bg-primary-subtle border border-danger mb-3 p-1 w-50 mx-auto">
-    <div class="row mb-3 p-3">
-        <h2 class="col-sm-5 h4">{{ task.title }}</h2>
-        <time class="col-sm-7 h4">{{ task.dueDate | date:'fullDate' }}</time>
-        <p class="h5">{{ task.summary }}</p>
+<article class="card p-3">
+    <div class="">
+        <p class="card-title h3">{{ task.title }}</p>
+        <time class="card-subtitle">{{ task.dueDate | date:'fullDate' }}</time>
+        <p class="card-body">{{ task.summary }}</p>
     </div>
     <div>
         <button class="btn btn-danger"
