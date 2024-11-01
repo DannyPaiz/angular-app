@@ -7,22 +7,23 @@
         [name]="selectedUser.name"
       ></app-tasks>
       } @else {
-      <p class="h4 p-1">Select a User to View their tasks</p>
-      <hr>
-      }
+      <p class="mt-2 h4 p-3 text-center">Select a User to View their tasks</p>
+    }
 
       @if(!selectedUser) {
-        <div class="row">
-          @for (user of users; track user.id) {
-            <div class="col-3">
-                <app-user
-                  [user]="user"
-                  (select)="onSelectUser($event)"
-                  [selected]="user.id === selectedUserId"
-                >
-                </app-user>
-            </div>
-            }
+        <div class="container">
+          <div class="row">
+            @for (user of users; track user.id) {
+              <div class="col-3">
+                  <app-user
+                    [user]="user"
+                    (select)="onSelectUser($event)"
+                    [selected]="user.id === selectedUserId"
+                  >
+                  </app-user>
+              </div>
+              }
+          </div>
         </div>
       }
 
