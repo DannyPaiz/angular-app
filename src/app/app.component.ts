@@ -14,7 +14,6 @@ import { TasksComponent } from './tasks/tasks.component';
     CardComponent, 
     UserComponent,
     TasksComponent
-    
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

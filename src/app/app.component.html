@@ -1,24 +1,29 @@
-<app-header></app-header>
-<main>
-  <ul>
-    @for (user of users; track user.id) {
-      <p>{{user.name}}</p>
-      <app-user
-        [user]="user"
-        (select)="onSelectUser($event)"
-        [selected]="user.id === selectedUserId"
-      >
-      </app-user>
-    }
-  </ul>
+<div class="container mx-auto">
+  <app-header></app-header>
+  <main class="">
 
-  @if (selectedUser) {
-    <app-tasks
-      [userId]="selectedUser.id"
-      [name]="selectedUser.name"
-    ></app-tasks>
-  } 
-  
-  @else {
-    <p>Select a User to View their tasks</p>
-  }
+    @if (selectedUser) {
+      <app-tasks
+        [userId]="selectedUser.id"
+        [name]="selectedUser.name"
+      ></app-tasks>
+      } @else {
+      <p>Select a User to View their tasks</p>
+      }
+
+    <ul>
+      @for (user of users; track user.id) {
+      <li>
+        <app-user
+          [user]="user"
+          (select)="onSelectUser($event)"
+          [selected]="user.id === selectedUserId"
+        >
+        </app-user>
+      </li>
+      }
+    </ul>
+
+
+  </main>
+</div>

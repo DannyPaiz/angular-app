@@ -1,4 +1,10 @@
-<section id="tasks">
+@if (isAddingTask) {
+    <app-new-task [userId]="userId"
+        (close)="onCloseAddTask()"
+    ></app-new-task>
+}
+
+<section>
     <header>
         <h1>Tasks Component</h1>
         <h2>{{ name }}'s Tasks</h2>
