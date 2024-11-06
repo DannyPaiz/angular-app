@@ -1,5 +1,8 @@
-<nav class="nav nav-pills nav-fill p-3 bg-warning-subtle">
+<nav class="nav nav-pills nav-fill p-3 bg-warning-subtle d-flex justify-content-start gap-5">
     <a class="h1" href="/">Daily Yeezus</a>
-    <a class="text-uppercase nav-item nav-link" href="#"><p class="font-weight-bold">Add User</p></a>
-    <a class="text-uppercase nav-link" href="#">Get Yeezy Quote</a>
+    <div>
+        <button class="btn btn-primary btn-lg"
+            (click)="onClickAddView()"
+        >Add User</button>
+    </div>
 </nav>

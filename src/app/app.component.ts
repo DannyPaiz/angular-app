@@ -23,6 +23,10 @@ export class AppComponent {
   users = DUMMY_USERS; // DATA
   selectedUserId?: string // store selected User > view their task / form
 
+  availableView = [
+    1, 2, 3
+  ]
+
   get selectedUser() {
     return this.users.find(
       (user) => user.id === this.selectedUserId
