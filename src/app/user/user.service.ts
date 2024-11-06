@@ -11,17 +11,19 @@ export class UserService {
 
     constructor() {
         // 
-        const users = localStorage.getItem('users');
+        let users = localStorage.getItem('users');
         if(users) {
             this.users = JSON.parse(users);
         }
     }
 
     // GET ALL USERS
+    // We want to use this to return the users,
+    // but we might need to update the actual file..
+    // deployed would have that local data available
+    // so re-rendering the new data is a must within @for user of users
     getUsers() {
-        return this.users.map(
-            (user) => user
-        );
+        return localStorage.getItem('users');
     }
 
     // generate and increase local user id to 'track'
@@ -29,11 +31,6 @@ export class UserService {
         const temp = 'u' + this.tempId;
         this.tempId += 1;
         return temp;
-    }
-
-    // tested: can be used now with addUser()
-    incrementUserId() {
-        const testGet = this.getNewUserId();
     }
 
     // ADD ONE USER

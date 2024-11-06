@@ -1,35 +1,42 @@
 <div class="mx-auto">
-  <app-header></app-header>
+  <app-header (click)="updateView(1)"></app-header>
   <main>
+    <!-- user may want to add a new user -->
     @if (selectedUser) {
-      <app-tasks
-        [userId]="selectedUser.id"
-        [name]="selectedUser.name"
-      ></app-tasks>
-      } @else {
-      <p class="mt-2 h4 p-3 text-center">Select a User to View their tasks</p>
+    <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name"></app-tasks>
     }
 
-      @if(!selectedUser) {
-        <div class="container">
-          <div class="row">
-            @for (user of users; track user.id) {
-              <div class="col-3">
-                  <app-user
-                    [user]="user"
-                    (select)="onSelectUser($event)"
-                    [selected]="user.id === selectedUserId"
-                  >
-                  </app-user>
-              </div>
-              }
-          </div>
+    @else if(!selectedUser && currentView == 2) {
+    <div class="d-flex justify-content-center mt-2 p-3 gap-3">
+      <p class="h3">Complete the form and add a new user</p>
+      <button class="btn btn-primary" (click)="updateView(1)">View All Users</button>
+    </div>
+    }
+
+    @else {
+    <div class="d-flex justify-content-center mt-2 p-3 gap-3">
+      <p class="h3">Select a User to View their tasks</p>
+      <button class="btn btn-primary" (click)="updateView(2)">Add User</button>
+    </div>
+    }
+
+    <!-- user wants to view a user and their tasks -->
+    @if(!selectedUser && currentView == 1) {
+    <div class="container">
+      <div class="row">
+        @for (user of users; track user.id) {
+        <div class="col-3">
+          <app-user [user]="user" (select)="onSelectUser($event)" [selected]="user.id === selectedUserId">
+          </app-user>
         </div>
-      }
+        }
+      </div>
+    </div>
+    }
 
-      @if(availableView[0] === 1) {
-
-      }
+    @if(currentView === 2) {
+    <app-new-user></app-new-user>
+    }
 
 
   </main>

@@ -18,7 +18,9 @@ export class HeaderComponent {
   private userService = inject(UserService);
 
   // user clicks on Add User button
-  onClickAddView() {
+  // render a VIEW here or in app.component
+
+  onSubmit() {
     console.log(`Clicked to add a User`);
     this.userService.addUser({
       id: this.userService.getNewUserId(),
@@ -28,4 +30,5 @@ export class HeaderComponent {
     this.close.emit();
   }
 
-}
+
+} 

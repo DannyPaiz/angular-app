@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { CardComponent } from './shared/card/card.component';
 import { DUMMY_USERS} from './dummy-users';
 import { UserComponent } from './user/user.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { NewUserComponent } from './user/new-user/new-user.component';
+import { UserService } from './user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,8 @@ import { TasksComponent } from './tasks/tasks.component';
     HeaderComponent, 
     CardComponent, 
     UserComponent,
-    TasksComponent
+    TasksComponent,
+    NewUserComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -23,9 +26,8 @@ export class AppComponent {
   users = DUMMY_USERS; // DATA
   selectedUserId?: string // store selected User > view their task / form
 
-  availableView = [
-    1, 2, 3
-  ]
+  // default view, ALL USERS to click and view their tasks
+  currentView = 1; // view 2: add a user form
 
   get selectedUser() {
     return this.users.find(
@@ -38,5 +40,24 @@ export class AppComponent {
   onSelectUser(id: string) {
     this.selectedUserId = id;
   }
+
+  updateView(viewNumber: number) {
+    this.currentView = viewNumber;
+  }
+
+
+  // NEED TO ADD USER SUCCESSSFULLY AND RENDER
+  // USERS can be updated or re-run
+  // might need to add another component just to re-render users
+  // instead of within app.component
+  // private userService = inject(UserService);
+
+  // next to re-render the application with local data...
+  // ngAfterContentChecked(): void {
+  //   //Called after every check of the component's view. Applies to components only.
+  //   //Add 'implements AfterViewChecked' to the class.
+  //   this.users = DUMMY_USERS;
+  //   console.log(this.users);
+  // }
 
 }
